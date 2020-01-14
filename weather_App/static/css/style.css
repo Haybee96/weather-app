@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #17202A; }
+
+.container {
+  display: grid;
+  grid-template-rows: 25vh min-content 20vh;
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; }
+
+.header {
+  background-image: linear-gradient(to right bottom, rgba(235, 152, 78, 0.5), rgba(110, 44, 0, 0.5)), url(../img/header_backg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 400;
+  padding: 1rem 1rem;
+  grid-column: full-start / full-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  align-items: center;
+  text-align: center; }
+  .header__form-input {
+    font-family: inherit;
+    padding: .5rem 2rem;
+    width: 50%;
+    border: none;
+    border-radius: 10px;
+    transition: all .3s;
+    text-transform: capitalize; }
+    .header__form-input:focus {
+      outline: none;
+      background-color: #f9f7f6;
+      width: 70%; }
+    .header__form-input::-webkit-input-placeholder {
+      color: #17202A;
+      font-weight: 200; }
+  .header__form .btn-add {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    background-color: #000;
+    color: #fff;
+    padding: .5rem 1rem;
+    transform: translateX(-1rem);
+    cursor: pointer;
+    font-weight: 400;
+    transition: all .3s; }
+    .header__form .btn-add:hover {
+      background-color: #AEB6BF; }
+
+.features {
+  grid-column: center-start / center-end;
+  margin: 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 7rem;
+  text-align: center; }
+
+.feature {
+  background-color: #f9f7f6;
+  padding: 2rem 0;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+  position: relative; }
+  .feature__image {
+    width: 4rem;
+    height: 4rem; }
+  .feature__name, .feature__temperature, .feature__description {
+    font-size: 1.3rem;
+    margin-top: 1rem; }
+  .feature:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1); }
+
+.footer {
+  background-image: linear-gradient(to right bottom, rgba(235, 152, 78, 0.5), rgba(110, 44, 0, 0.5)), url(../img/header_backg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 4.5rem 0;
+  line-height: 1.9;
+  grid-column: full-start / full-end; }

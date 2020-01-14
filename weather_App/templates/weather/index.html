@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Weather Status</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500" rel="stylesheet">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="img/ico">
+
+        <style>
+            .alert__message-danger { background-color: red; }
+            .alert__message-success { background-color: green; }
+            .alert__message-danger, .alert__message-success {
+                color: #fff;
+                padding: 1rem;
+                border-radius: 5px; 
+            }
+
+            .btn__close {
+                border: none;
+                outline: none;
+                color: red;
+                position: absolute;
+                top: 1rem;
+                background-color: inherit;
+                right: 1rem;
+                font-size: 1.3rem;
+                font-family: 'Poppins', sans-serif;
+                cursor: pointer;
+            }
+        </style>
+
+    </head>
+
+    <body class="container">
+        <header class="header">
+            <div class="header__text">
+                Weather Status of locations
+            </div>
+            <form method="POST" class="header__form">
+                {% csrf_token %}
+                {{ form.name }}
+                <button class="btn-add" type="submit">Add City</button>
+            </form>
+
+            <!-- Alert message -->
+            {% include 'partials/_alert.html' %}
+        </header>
+
+        <section class="features">
+            {% for city_data in city_weather %}
+            <div class="feature">
+                <img src="http://openweathermap.org/img/w/{{ city_data.icon }}.png" alt="icon" class="feature__image">
+                <a href="{% url 'delete_city' city_data.city %}">
+                    <button class="btn__close">delete</button>
+                </a>
+                <h5 class="feature__name">{{ city_data.city }}</h5>
+                <p class="feature__temperature">{{ city_data.temperature }} <sup>o</sup>C</p>
+                <p class="feature__description">{{ city_data.description }}</p>
+            </div>
+            {% endfor %}
+        </section>
+
+        <footer class="footer">
+            &copy; Copyright 2020 Weatherstatus by Haybee
+        </footer>
+
+        
+        
+
+        <script src="{% static 'js/index.js' %}"></script>
+    </body>
+
+</html>
